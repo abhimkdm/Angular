@@ -1,5 +1,21 @@
-<br>
-<br>
-<br>
-Hello Todo
-<a [routerLink]="['/Login']">Logout</a> &nbsp;&nbsp;&nbsp;
+
+<div class="jumbotron">
+    <fieldset>
+
+     <legend> To-Do</legend>
+
+
+<form>
+    <div class="form-group">
+      <input type="text" class="form-control"  name="Task"  placeholder="Enter the task">
+    </div>
+    <ul>
+      <li *ngFor="let item of TaskList">
+        {{item.TaskName}}
+      </li>
+    </ul>
+    <button type="submit" class="btn btn-primary">+Add Task</button>
+  </form>
+
+  </fieldset>
+  </div>

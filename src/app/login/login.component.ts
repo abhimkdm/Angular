@@ -1,12 +1,25 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '../../../node_modules/@angular/forms';
+import { ILogin} from './login.interface';
+import { TodoService } from '../todo/todo.service';
 
 @Component({
   templateUrl:'./login.component.html',
   styleUrls:['./login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements ILogin {
+
+  Login() {
+    throw new Error("Method not implemented.");
+  }
+
+
+  LoginModel : any = {
+          UserName: '',
+          Password: '',
+  }
 
   UserName: string;
   Password: string;
@@ -14,12 +27,17 @@ export class LoginComponent {
 
   //private _route = Router; //cannot we define like primitive type?
 
-  constructor(private _route : Router)
+  constructor(private _route : Router, private _myservice : TodoService)
   {
 
   }
 
-  Login = function(){
+// Login(loginModel : NgForm) : void{
+//   this._route.navigate(['/Todo']);
+//   }
+
+
+  Login1 = function(){
 
     if (this.UserName ==='Admin' && this.Password ==="Password")
     {

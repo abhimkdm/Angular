@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ExamplesComponent } from './examples/examples.component';
-
+import { TodoService } from './todo/todo.service';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import { ExamplesComponent } from './examples/examples.component';
       { path: 'Todo', component: TodoComponent }
     ])
   ],
-  providers: [],
+  providers: [TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

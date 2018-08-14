@@ -1,19 +1,34 @@
-<p> Login</p>
 
+<div class="jumbotron">
+<fieldset>
 
-<form>
+ <legend> Login</legend>
+
+<form (ngSubmit)="Login(LoginModel)" #LoginForm="ngForm">
   <div class="form-group">
     <label for="exampleInputEmail1">User Name</label>
-
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="UserName" [(ngModel)]="UserName" placeholder="Enter User Name">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter User Name"
+        [(ngModel)]="LoginModel.UserName"
+        name="UserName"
+        #userNameVar="ngModel" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="Password" [(ngModel)]="Password" placeholder="Password">
+    <input type="password" class="form-control" id="exampleInputPassword1"
+     name="Password" [(ngModel)]="LoginModel.Password"
+     #Passwordvar="ngModel" placeholder="Password" required>
   </div>
 
-  <button type="submit" class="btn btn-primary" (click)="Login()">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="LoginForm.invalid">Submit</button>
+
+  <hr>
+  <pre>TDF States</pre>
+  <pre>Touched? {{userNameVar.touched}} &nbsp; | &nbsp; UnTouched? {{userNameVar.untouched}} </pre>
+  <pre>Dirty? {{userNameVar.dirty}} &nbsp; &nbsp;| &nbsp; pristine? {{userNameVar.pristine}} </pre>
+  <pre>Valid? {{LoginForm.valid}} &nbsp; &nbsp;| &nbsp; InValid? {{LoginForm.invalid}} </pre>
+
 </form>
 
+</fieldset>
+</div>
 
