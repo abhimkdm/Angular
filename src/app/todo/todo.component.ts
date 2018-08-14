@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ITodo } from './todo.interface';
 import { TodoService } from './todo.service';
+import { TodoModel } from './todo.model';
 
 @Component({
   templateUrl: './todo.component.html'
@@ -11,12 +12,20 @@ export class TodoComponent implements OnInit {
   name: string;
   title: string = "Abhishek";
   TaskList : any;
+  ObjTodoModel : TodoModel;
 
-  constructor(private _Myservice : TodoService){}
-
-  ngOnInit(): void {
-    this.TaskList = this._Myservice.Tasks;
+  constructor(private _Myservice : TodoService){
+    this.ObjTodoModel= new TodoModel();
   }
 
+  ngOnInit(): void {
+    this.TaskList = this._Myservice.getTodos();
+  }
+
+  //Add Todo
+  addTodo(todo : TodoModel){
+    this._Myservice.addTodo(todo);
+    this.ObjTodoModel=new TodoModel();
+  }
 
 }

@@ -1,21 +1,23 @@
-
 <div class="jumbotron">
-    <fieldset>
-
-     <legend> To-Do</legend>
-
-
-<form>
-    <div class="form-group">
-      <input type="text" class="form-control"  name="Task"  placeholder="Enter the task">
-    </div>
-    <ul>
-      <li *ngFor="let item of TaskList">
-        {{item.TaskName}}
-      </li>
-    </ul>
-    <button type="submit" class="btn btn-primary">+Add Task</button>
-  </form>
-
+  <fieldset>
+    <legend> To-Do</legend>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" name="Task" placeholder="Enter the task" [(ngModel)]="ObjTodoModel.TaskName" >
+      </div>
+      <div class="container">
+        <div class="row" *ngFor='let item of TaskList'>
+          <div class="col-sm-0">
+            <input type="checkbox">
+          </div>
+          <div class="col-sm-3">
+            <label> {{item.TaskName}}</label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="addTodo(ObjTodoModel)" >+Add Task</button>
+      &nbsp;&nbsp;| &nbsp;&nbsp;
+      <button type="submit" class="btn btn-danger">Delete Task</button>
+    </form>
   </fieldset>
-  </div>
+</div>

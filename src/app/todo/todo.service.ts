@@ -4,16 +4,29 @@ import { Injectable } from "../../../node_modules/@angular/core";
 @Injectable()
 export class TodoService {
 
-  Tasks : ITodo[] = [
-    {
-      TaskId : 1, TaskName: "Some Task For ME", Status : true
-    },
-    {
-      TaskId : 2, TaskName: "2nd Task For ME", Status : true
-    },
-    {
-      TaskId : 3, TaskName: "3rd Task For ME", Status : true
-    }
-  ]
+  private count : number = 0;
+  private TodoList : ITodo[] = [];
 
+  //Add the data to TodoList
+  addTodo(todo : ITodo){
+    todo.TaskId = ++this.count;
+    todo.Status = false;
+    this.TodoList.push(todo);
+  }
+
+  //Get all todos
+  getTodos(): ITodo[] {
+    return this.TodoList;
+  }
+
+  //Get Task ID
+  //Delete
+  //TogleTaskStatus
+
+
+  // Adding the Todo List
+  // Displaying back to UI
+  //CR
+
+  //How HomeWork UD
 }
