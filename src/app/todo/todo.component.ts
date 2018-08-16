@@ -19,7 +19,11 @@ export class TodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.TaskList = this._Myservice.getTodos();
+   // this.TaskList = this._Myservice.getTodos();
+
+    this._Myservice.get().subscribe(data =>
+      this.TaskList=data
+    );
   }
 
   //Add Todo

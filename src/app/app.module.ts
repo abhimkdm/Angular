@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ExamplesComponent } from './examples/examples.component';
 import { TodoService } from './todo/todo.service';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { TodoService } from './todo/todo.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', redirectTo:'Login', pathMatch:'full' }, //localhost:5000/Login
       { path: 'Login', component: LoginComponent },
