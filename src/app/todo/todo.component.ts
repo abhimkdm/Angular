@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ITodo } from './todo.interface';
 import { TodoService } from './todo.service';
 import { TodoModel } from './todo.model';
+import { map } from '../../../node_modules/rxjs/operators';
 
 @Component({
   templateUrl: './todo.component.html'
@@ -21,9 +22,10 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
    // this.TaskList = this._Myservice.getTodos();
 
-    this._Myservice.get().subscribe(data =>
-      this.TaskList=data
-    );
+    this._Myservice.getAllTodos()
+      .subscribe(
+        data =>this.TaskList=data
+      );
   }
 
   //Add Todo

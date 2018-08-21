@@ -1,12 +1,12 @@
 [
-  {
-    "TaskId": 1,
-    "TaskName": "My First Tasks",
-    "Status": false
-  },
-  {
-    "TaskId": 2,
-    "TaskName": "My Second Tasks",
-    "Status": false
-  }
+{
+  "TaskId" : 1,
+  "TaskName" : "My First Task",
+  "Status" : false
+},
+{
+  "TaskId" : 2,
+  "TaskName" : "My Second Task",
+  "Status" : false
+}
 ]
