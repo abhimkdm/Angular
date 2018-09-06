@@ -1,37 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { ITodo } from './todo.interface';
-import { TodoService } from './todo.service';
-import { TodoModel } from './todo.model';
-import { map } from '../../../node_modules/rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { ITodo } from "./todo.interface";
+import { TodoService } from "./todo.service";
+import { TodoModel } from "./todo.model";
+import { map } from "rxjs/operators";
+import { ExamplesComponent } from "../examples/examples.component";
 
 @Component({
-  templateUrl: './todo.component.html'
+  templateUrl: "./todo.component.html",
+  styleUrls: ["./todo.component.css"]
 })
-
 export class TodoComponent implements OnInit {
-
   name: string;
   title: string = "Abhishek";
-  TaskList : any;
-  ObjTodoModel : TodoModel;
+  TaskList: any;
+  ObjTodoModel: TodoModel;
+  errorMessage : string;
 
-  constructor(private _Myservice : TodoService){
-    this.ObjTodoModel= new TodoModel();
+  constructor(private todoService: TodoService) {
+    this.ObjTodoModel = new TodoModel();
+
   }
 
   ngOnInit(): void {
-   // this.TaskList = this._Myservice.getTodos();
+    this.getAllTodo();
+  }
 
-    this._Myservice.getAllTodos()
-      .subscribe(
-        data =>this.TaskList=data
-      );
+  getAllTodo() {
+    this.todoService.getAllTodos().subscribe(
+      data => this.TaskList = data,
+      err => this.errorMessage = "Resource Not Found"
+    )
   }
 
   //Add Todo
-  addTodo(todo : TodoModel){
-    this._Myservice.addTodo(todo);
-    this.ObjTodoModel=new TodoModel();
+  addTodo(todo: TodoModel) {
+    this.todoService.addTodo(todo);
+    this.ObjTodoModel = new TodoModel();
+  }
+
+
+  ClickEventForParent(message : boolean){
+    console.log(message);
   }
 
 }

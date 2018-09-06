@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '../../../node_modules/@angular/forms';
+import { NgForm } from '@angular/forms';
 import { ILogin} from './login.interface';
 import { TodoService } from '../todo/todo.service';
+import { ExamplesComponent } from '../examples/examples.component';
 
 @Component({
   templateUrl:'./login.component.html',
@@ -29,7 +30,8 @@ export class LoginComponent implements ILogin {
 
   constructor(private _route : Router, private _myservice : TodoService)
   {
-
+    let obj=new ExamplesComponent(_route);
+    let obj1=new ExamplesComponent(_route);
   }
 
 // Login(loginModel : NgForm) : void{

@@ -1,6 +1,73 @@
-<p>
-  examples works!
-</p>
+<div class="jumbotron">
+  <section>
+    <fieldset>
+      <legend > Angular Life Cycle Hooks </legend>
+      <hr>
+      <div class="container">
+          <div class="row">
+              <div class="col" appColor>Please check the console for Out Put</div>
+            </div>
+      </div>
+    </fieldset>
+  </section>
+</div>
+
+<input type="button" (click)="RedirectMe()" value="RedirectMe" >
+
+<div class="jumbotron">
+  <section>
+    <fieldset>
+      <legend> Pipes </legend>
+      <hr>
+      <div class="container">
+        <div class="row">
+          <div class="col">Uppercase</div>
+          <div class="col">{{'Angular' | uppercase }} </div>
+        </div>
+        <div class="row">
+          <div class="col">LowerCase</div>
+          <div class="col">{{'Angular' | lowercase }} </div>
+        </div>
+        <div class="row">
+          <div class="col">Currency</div>
+          <div class="col">{{ 1000.00 | currency : 'USD' }} </div>
+        </div>
+        <div class="row">
+          <div class="col">Date Formats</div>
+          <div class="col">{{ '08/28/2018' | date : 'd/M/y' }} </div>
+        </div>
+        <div class="row">
+          <div class="col">Time Formats</div>
+          <div class="col">{{ '08/28/2018 , 10:10 PM' | date : 'shortTime' }} </div>
+        </div>
+        <div class="row">
+            <div class="col">Custom Pipe</div>
+            <div class="col">{{ 'Angular' | reverse }} </div>
+          </div>
+      </div>
+    </fieldset>
+  </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <span *ngIf="ErrorFlag">User name and Pasword not Correct</span>
 <span style="display: none" >User name and Pasword not Correct</span>

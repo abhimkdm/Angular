@@ -1,24 +1,57 @@
 <div class="jumbotron">
-  <fieldset>
-    <legend> To-Do</legend>
-    <form>
-      <div class="form-group">
-        <input type="text" class="form-control" name="Task" placeholder="Enter the task" [(ngModel)]="ObjTodoModel.TaskName" >
-      </div>
-      <div class="container">
-        <div class="row" *ngFor='let item of TaskList'>
-          <div class="col-sm-0">
-            <input type="checkbox">
+  <section>
+    <fieldset>
+      <legend> To-Do : </legend>
+      <form>
+        <div class="form-group row">
+          <div class="col-sm-5">
+            <input type="text" class="form-control" name="Task" placeholder="Enter the task" [(ngModel)]="ObjTodoModel.TaskName">
           </div>
-          <div class="col-sm-3">
-            <label> {{item.TaskName}}</label>
-
+          <div class="col-sm-5">
+            <input [(ngModel)]="searchText" name="Search" class="form-control" placeholder="search text goes here">
           </div>
         </div>
-      </div>
-      <button type="submit" class="btn btn-primary" (click)="addTodo(ObjTodoModel)" >+Add Task</button>
-      &nbsp;&nbsp;| &nbsp;&nbsp;
-      <button type="submit" class="btn btn-danger">Delete Task</button>
-    </form>
-  </fieldset>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Task Name</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let todo of TaskList | filter : searchText">
+                <th scope="row">{{todo.TaskId}}</th>
+                <td>{{todo.TaskName}}</td>
+                <td><app-status [inputFromParentStatus]='todo.Status' [inputFromParentTaskName]='todo.TaskName' (notifyParent)="ClickEventForParent($event)" ></app-status></td>
+              </tr>
+            </tbody>
+          </table>
+        <!-- <div class="container">
+          <div class="row" *ngFor="let todo of TaskList | filter : searchText">
+            <div class="col-sm-0">
+              <input type="checkbox">
+            </div>
+            <div class="col-sm-8">
+              <label> {{todo.TaskName}} </label>
+            </div>
+          </div>
+        </div> -->
+        <hr>
+        <p>
+          <button type="submit" class="btn btn-primary" (click)="addTodo(ObjTodoModel)">+</button>
+          &nbsp;|&nbsp;
+          <button type="submit" class="btn btn-danger">-</button>
+        </p>
+        <hr>
+        {{errorMessage}}
+        <!-- <p>
+          <input type="radio" name="filter"> Show All
+          &nbsp;|&nbsp;
+          <input type="radio" name="filter"> Show Active
+        </p> -->
+      </form>
+    </fieldset>
+  </section>
+
 </div>
